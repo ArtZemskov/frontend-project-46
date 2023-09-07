@@ -34,3 +34,4 @@ const result = Object.keys(newObject)
     return `{\n${result}\n}`;
 };
 // console.log(genDiff('file1.json', 'file2.json'));
+export default genDiff;
