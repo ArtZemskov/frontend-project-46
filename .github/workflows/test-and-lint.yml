@@ -14,5 +14,6 @@ jobs:
       - name: Lint
         run: make lint
       - name: code climate coverege
+        uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
