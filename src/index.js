@@ -1,6 +1,7 @@
 import { cwd } from 'node:process';
 import path from 'path';
 import fs from 'fs';
+import _ from 'lodash';
 
 const genDiff = (path1, path2) => {
   const resolvedPath1 = path.resolve(cwd(), path1);
@@ -12,7 +13,7 @@ const genDiff = (path1, path2) => {
   const obj2 = JSON.parse(data2);
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
-  const uniqueSortedKeys = Array.from(new Set([...keys1, ...keys2])).sort();
+  const uniqueSortedKeys = _.sortBy(Array.from(new Set([...keys1, ...keys2])));
 
   const newObject = uniqueSortedKeys.reduce((acc, key) => {
     if (!Object.hasOwn(obj1, key)) {
