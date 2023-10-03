@@ -13,3 +13,6 @@ jobs:
         run: make test
       - name: Lint
         run: make lint
+      - name: code climate coverege
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
