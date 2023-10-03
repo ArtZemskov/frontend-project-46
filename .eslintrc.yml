@@ -6,12 +6,13 @@ extends: airbnb-base
 overrides:
   [
     {
-      files: ["index.test.js", "gendiff.js"],
+      files: ["index.test.js", "gendiff.js", index.js],
       rules:
         {
           "import/extensions": "off",
           "no-underscore-dangle": "off",
           "no-console": "off",
+          "import/no-extraneous-dependencies": "off",
         },
     },
   ]
