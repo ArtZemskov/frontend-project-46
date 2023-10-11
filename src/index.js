@@ -2,6 +2,7 @@ import { cwd } from 'node:process';
 import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
+import parser from './parsers/parser.js';
 
 const genDiff = (path1, path2) => {
   const resolvedPath1 = path.resolve(cwd(), path1);
@@ -9,8 +10,8 @@ const genDiff = (path1, path2) => {
   const data1 = fs.readFileSync(resolvedPath1, 'utf-8');
   const data2 = fs.readFileSync(resolvedPath2, 'utf-8');
 
-  const obj1 = JSON.parse(data1);
-  const obj2 = JSON.parse(data2);
+  const obj1 = parser(data1, path.extname(path1).slice(1));
+  const obj2 = parser(data2, path.extname(path2).slice(1));
   const keys1 = Object.keys(obj1);
   const keys2 = Object.keys(obj2);
   const uniqueSortedKeys = _.sortBy(Array.from(new Set([...keys1, ...keys2])));

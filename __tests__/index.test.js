@@ -13,3 +13,11 @@ test('difference', () => {
   const pathToFile2 = path.join(__dirname, '..', '__fixtures__', 'file2.json');
   expect(genDiff(pathToFile1, pathToFile2)).toEqual(result);
 });
+
+test('diffYaml', () => {
+  const pathToTest = path.join(__dirname, '..', '__fixtures__', 'test1.txt');
+  const result = fs.readFileSync(pathToTest, 'utf-8');
+  const pathToFile1 = path.join(__dirname, '..', '__fixtures__', 'file1.yaml');
+  const pathToFile2 = path.join(__dirname, '..', '__fixtures__', 'file2.yaml');
+  expect(genDiff(pathToFile1, pathToFile2)).toEqual(result);
+});
