@@ -1,7 +1,6 @@
 import { cwd } from 'node:process';
 import path from 'path';
 import fs from 'fs';
-import _ from 'lodash';
 import parser from './parsers/parser.js';
 import formatter from './formatters/index.js';
 import buildTree from './buildTree.js';
