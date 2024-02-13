@@ -5,6 +5,9 @@ const buildTree = (obj1, obj2) => {
   const keys2 = Object.keys(obj2);
   const uniqueSortedKeys = _.sortBy(Array.from(new Set([...keys1, ...keys2])));
   const result = uniqueSortedKeys.map((key) => {
+    if (_.isPlainObject(obj1[key]) && _.isPlainObject(obj2[key])) {
+      return { key, children: buildTree(obj1[key], obj2[key]), status: 'nested' };
+    }
     if (!Object.hasOwn(obj1, key)) {
       return { key, value: obj2[key], status: 'added' };
     }
