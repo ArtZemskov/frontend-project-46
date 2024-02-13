@@ -1,20 +1,20 @@
 import _ from 'lodash';
 
-const spacesCount = 2;
+const spacesCount = 4;
 const space = ' ';
 
 const srtingify = (tree, depth) => {
-  const iter = (currentValue, depth) => {
+  const iter = (currentValue, innerDepth) => {
     if (!_.isPlainObject(currentValue)) {
       return `${currentValue}`;
     }
-    const indentSize = depth * spacesCount;
+    const indentSize = innerDepth * spacesCount;
     const currentIndent = space.repeat(indentSize);
     const bracketIndent = space.repeat(indentSize - spacesCount);
     const lines = Object.entries(currentValue);
     const result = lines.map(([key, value]) => {
       if (_.isPlainObject(value)) {
-        return `${currentIndent}${key}: ${iter(value, depth + 1)}`;
+        return `${currentIndent}${key}: ${iter(value, innerDepth + 1)}`;
       }
       return `${currentIndent}${key}: ${value}`;
     });
@@ -24,8 +24,9 @@ const srtingify = (tree, depth) => {
 };
 
 const stylish = (tree, depth = 1) => {
-  const indentSize = depth * spacesCount;
+  const indentSize = spacesCount * depth - 2;
   const currentIndent = space.repeat(indentSize);
+  const bracketIndent = space.repeat(indentSize - 2);
   const result = tree.reduce((acc, item) => {
     if (item.status === 'nested') {
       acc.push(`${currentIndent}  ${item.key}: ${stylish(item.children, depth + 1)}`);
@@ -41,6 +42,6 @@ const stylish = (tree, depth = 1) => {
     }
     return acc;
   }, []);
-  return `{\n${result.join('\n')}\n}`;
+  return `{\n${result.join('\n')}\n${bracketIndent}}`;
 };
 export default stylish;
