@@ -27,21 +27,22 @@ const stylish = (tree, depth = 1) => {
   const indentSize = spacesCount * depth - 2;
   const currentIndent = space.repeat(indentSize);
   const bracketIndent = space.repeat(indentSize - 2);
-  const result = tree.reduce((acc, item) => {
-    if (item.status === 'nested') {
-      acc.push(`${currentIndent}  ${item.key}: ${stylish(item.children, depth + 1)}`);
+  const result = tree.map((node) => {
+    switch (node.status) {
+      case 'nested':
+        return `${currentIndent}  ${node.key}: ${stylish(node.children, depth + 1)}`;
+      case 'added':
+        return `${currentIndent}+ ${node.key}: ${srtingify(node.value, depth)}`;
+      case 'deleted':
+        return `${currentIndent}- ${node.key}: ${srtingify(node.value, depth)}`;
+      case 'changed':
+        return `${currentIndent}- ${node.key}: ${srtingify(node.value1, depth)}\n${currentIndent}+ ${node.key}: ${srtingify(node.value2, depth)}`;
+      case 'unchanged':
+        return `${currentIndent}  ${node.key}: ${srtingify(node.value, depth)}`;
+      default:
+        throw new Error(`Unknown node status: ${node.status}.`);
     }
-    if (item.status === 'added') {
-      acc.push(`${currentIndent}+ ${item.key}: ${srtingify(item.value, depth)}`);
-    } else if (item.status === 'deleted') {
-      acc.push(`${currentIndent}- ${item.key}: ${srtingify(item.value, depth)}`);
-    } else if (item.status === 'changed') {
-      acc.push(`${currentIndent}- ${item.key}: ${srtingify(item.value1, depth)}\n${currentIndent}+ ${item.key}: ${srtingify(item.value2, depth)}`);
-    } else if (item.status === 'unchanged') {
-      acc.push(`${currentIndent}  ${item.key}: ${srtingify(item.value, depth)}`);
-    }
-    return acc;
-  }, []);
+  });
   return `{\n${result.join('\n')}\n${bracketIndent}}`;
 };
 export default stylish;
