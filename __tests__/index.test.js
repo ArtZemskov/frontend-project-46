@@ -9,11 +9,21 @@ const __dirname = path.dirname(__filename);
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 
 test.each([
-  { file1: 'file1.json', file2: 'file2.json', format: 'stylish', expected: 'stylish.txt' },
-  { file1: 'file1.yaml', file2: 'file2.yaml', format: 'stylish', expected: 'stylish.txt' },
-  { file1: 'file1.json', file2: 'file2.json', format: 'plain', expected: 'plain.txt' },
-  { file1: 'file1.yaml', file2: 'file2.yaml', format: 'plain', expected: 'plain.txt' },
-])('diff', ({ file1, file2, format, expected }) => {
+  {
+    file1: 'file1.json', file2: 'file2.json', format: 'stylish', expected: 'stylish.txt',
+  },
+  {
+    file1: 'file1.yaml', file2: 'file2.yaml', format: 'stylish', expected: 'stylish.txt',
+  },
+  {
+    file1: 'file1.json', file2: 'file2.json', format: 'plain', expected: 'plain.txt',
+  },
+  {
+    file1: 'file1.yaml', file2: 'file2.yaml', format: 'plain', expected: 'plain.txt',
+  },
+])('diff', ({
+  file1, file2, format, expected,
+}) => {
   const pathToFile1 = getFixturePath(file1);
   const pathToFile2 = getFixturePath(file2);
   const result = getFixturePath(expected);
