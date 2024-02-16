@@ -2,7 +2,8 @@
 [![Actions Status](https://github.com/ArtZemskov/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/ArtZemskov/frontend-project-46/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/14cce2986699219751d3/maintainability)](https://codeclimate.com/github/ArtZemskov/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/14cce2986699219751d3/test_coverage)](https://codeclimate.com/github/ArtZemskov/frontend-project-46/test_coverage)
-[![Actions Status](https://github.com/ArtZemskov/frontend-project-46/actions/workflows/test&lint.yml/badge.svg)](https://github.com/ArtZemskov/frontend-project-46/actions)
+[![Test and lint](https://github.com/ArtZemskov/frontend-project-46/actions/workflows/test-and-lint.yml/badge.svg)](https://github.com/ArtZemskov/frontend-project-46/actions/workflows/test-and-lint.yml)
+[![Actions Status](https://github.com/ArtZemskov/frontend-project-46/actions/workflows/test-and-lint.yml/badge.svg)](https://github.com/ArtZemskov/frontend-project-46/actions)
 
 # Description
 
