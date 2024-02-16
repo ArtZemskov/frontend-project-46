@@ -10,7 +10,7 @@ The Difference Calculator is a program that finds differences between two data s
 
 ## How to use it:
 
-+ git@github.com:ArtZemskov/frontend-project-46.git
++ git clone git@github.com:ArtZemskov/frontend-project-46.git
 + npm ci
 + npm link
 
@@ -18,7 +18,7 @@ The Difference Calculator is a program that finds differences between two data s
 gendiff -h
 
 ### Run
-fendiff -f <format> <path1> <path2> 
+gendiff -f format path/to/file1.extension path/to/file2.extension
 
 ## *Help, default formatter(stylish)*
 
