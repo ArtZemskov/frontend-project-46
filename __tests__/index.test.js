@@ -27,6 +27,12 @@ test.each([
   {
     file1: 'file1.yaml', file2: 'file2.yaml', format: 'json', expected: 'json.txt',
   },
+  {
+    file1: 'file1.json', file2: 'file2.json', format: undefined, expected: 'stylish.txt',
+  },
+  {
+    file1: 'file1.yaml', file2: 'file2.yaml', format: undefined, expected: 'stylish.txt',
+  },
 ])('diff', ({
   file1, file2, format, expected,
 }) => {
