@@ -15,10 +15,10 @@ The Difference Calculator is a program that finds differences between two data s
 + npm link
 
 ### Run help
-gendiff -h
+> gendiff -h
 
 ### Run
-gendiff -f format path/to/file1.extension path/to/file2.extension
+> gendiff -f format path/to/file1.extension path/to/file2.extension
 
 ## *Help, default formatter(stylish)*
 
