@@ -2,7 +2,7 @@ import json from './json.js';
 import plain from './plain.js';
 import stylish from './stylish.js';
 
-const formatter = (arr, format) => {
+const formatDiff = (arr, format) => {
   switch (format) {
     case 'stylish':
       return stylish(arr);
@@ -14,4 +14,4 @@ const formatter = (arr, format) => {
       throw new Error('wrong format');
   }
 };
-export default formatter;
+export default formatDiff;
